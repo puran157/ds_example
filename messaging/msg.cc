@@ -77,6 +77,7 @@ void* Process(void *arg)
 			Message *t = msgQ->front();
 			cout<<"Processing message\n";
 			t->PerformOperation();
+			delete t;
 			msgQ->pop();
 		}
 	}
@@ -132,5 +133,10 @@ main()
 	exitF = true;
 	pthread_join(thread[0], NULL);
 	pthread_join(thread[1], NULL);
+	while(!msgQ->empty()) {
+		Message *t = msgQ->front();
+		delete t;
+		msgQ->pop();
+	}
 	
 }
