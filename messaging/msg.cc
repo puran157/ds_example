@@ -5,6 +5,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
+//TODO: Insert read/write locks for global queue
 using namespace std;
 
 typedef void *(*prototype)(void *arg);
